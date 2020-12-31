@@ -239,3 +239,14 @@ kamel log telegram-text-source-to-channel
 [3] 2020-12-31 13:47:14,466 INFO  [telegram-text-source-695F2126EC562F3-0000000000000000] (Camel (camel-1) thread #0 - telegram://bots) {"firstName": "john", "lastName": "Joe"}
 ```
 
+The logs you're seeing here are the logs of the kamelet itself and to verify events are received by the cloudevents consumer, just run the `kn` integration again : 
+
+```bash
+kamel run integrations/kn.groovy --dev
+
+[1] 2020-12-31 13:59:02,155 INFO  [io.quarkus] (main) Installed features: [camel-attachments, camel-bean, camel-core, camel-endpointdsl, camel-k-core, camel-k-knative, camel-k-knative-consumer, camel-k-loader-groovy, camel-k-runtime, camel-log, camel-main, camel-platform-http, camel-support-common, cdi, mutiny, smallrye-context-propagation, vertx, vertx-web]
+Condition "Ready" is "True" for Integration kn
+[1] 2020-12-31 13:59:32,198 INFO  [info] (vert.x-worker-thread-0) Exchange[ExchangePattern: InOnly, BodyType: byte[], Body: {"firstName": "bot", "lastName": "Joe"}]
+```
+
+
