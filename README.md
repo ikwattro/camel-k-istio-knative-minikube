@@ -249,4 +249,7 @@ Condition "Ready" is "True" for Integration kn
 [1] 2020-12-31 13:59:32,198 INFO  [info] (vert.x-worker-thread-0) Exchange[ExchangePattern: InOnly, BodyType: byte[], Body: {"firstName": "bot", "lastName": "Joe"}]
 ```
 
+---
+
+More Camel K resources available on the [awesome-camel-k repository](https://github.com/ikwattro/awesome-camel-k)
 
