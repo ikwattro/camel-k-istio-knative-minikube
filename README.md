@@ -200,3 +200,42 @@ And you should see the event logged from the integration :
 [2] 2020-12-31 11:52:57,309 INFO  [info] (vert.x-worker-thread-0) Exchange[ExchangePattern: InOnly, BodyType: byte[], Body: {"firstName":"John", "lastName":"Doe"}]
 ```
 
+#### Using Kamelets
+
+This repository contains the same example as in the Camel K docs for the Telegram kamelet but instead make use of knative eventing without manually creating channels.
+
+Deploy the telegram kamelet : 
+
+```bash
+kubectl apply -f kamelets/kamelet-telegram.yml
+```
+
+Create the bot token secret : 
+
+```bash
+kubectl create secret generic telegram --from-literal=BOT_TOKEN=XXXXXXXXX
+```
+
+Label the secret so it will be picked up by the integration 
+
+```bash
+kubectl label secret telegram camel.apache.org/kamelet=telegram-text-source
+```
+
+Run the kamelet binding ( which will create an integration under the hood )
+
+```bash
+kubectl apply -f kamelets/kamelet-binding.yml
+```
+
+Inspect the logs of the integration : 
+
+```log
+kamel log telegram-text-source-to-channel
+
+[3] 2020-12-31 13:47:06,625 INFO  [io.quarkus] (main) Profile prod activated.
+[3] 2020-12-31 13:47:06,626 INFO  [io.quarkus] (main) Installed features: [camel-attachments, camel-bean, camel-core, camel-direct, camel-endpointdsl, camel-k-core, camel-k-kamelet, camel-k-knative, camel-k-knative-producer, camel-k-loader-yaml, camel-k-runtime, camel-main, camel-platform-http, camel-support-ahc, camel-support-common, camel-support-webhook, camel-telegram, cdi, mutiny, smallrye-context-propagation, vertx, vertx-web]
+[3] 2020-12-31 13:47:14,464 INFO  [telegram-text-source-695F2126EC562F3-0000000000000000] (Camel (camel-1) thread #0 - telegram://bots) john
+[3] 2020-12-31 13:47:14,466 INFO  [telegram-text-source-695F2126EC562F3-0000000000000000] (Camel (camel-1) thread #0 - telegram://bots) {"firstName": "john", "lastName": "Joe"}
+```
+
