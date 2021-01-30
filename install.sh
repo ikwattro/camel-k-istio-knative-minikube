@@ -12,6 +12,8 @@ kubectl apply --filename https://github.com/knative/serving/releases/download/v0
 
 istioctl install -f istio/install.yml
 
+kubectl apply --filename https://github.com/knative/net-istio/releases/download/v0.19.0/release.yaml
+
 kubectl label namespace knative-serving istio-injection=enabled
 
 kubectl apply -f istio/permissive.yml
