@@ -1,3 +1,5 @@
+More Camel K resources available on the [awesome-camel-k repository](https://github.com/ikwattro/awesome-camel-k)
+
 ## Run Knative and Camel K on minikube
 
 This repository contains the instructions to install and run `knative`, `istio`, `camel k` on `minikube`.
@@ -250,6 +252,4 @@ Condition "Ready" is "True" for Integration kn
 ```
 
 ---
-
-More Camel K resources available on the [awesome-camel-k repository](https://github.com/ikwattro/awesome-camel-k)
 
