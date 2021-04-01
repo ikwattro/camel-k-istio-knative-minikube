@@ -18,9 +18,9 @@ minikube start --driver=virtualbox \
 #### Install Knative Resources and Components
 
 ```bash
-kubectl apply --filename https://github.com/knative/serving/releases/download/v0.19.0/serving-crds.yaml
+kubectl apply --filename https://github.com/knative/serving/releases/download/v0.21.0/serving-crds.yaml
 
-kubectl apply --filename https://github.com/knative/serving/releases/download/v0.19.0/serving-core.yaml
+kubectl apply --filename https://github.com/knative/serving/releases/download/v0.21.0/serving-core.yaml
 ```
 
 #### Install Istio
@@ -46,7 +46,7 @@ kubectl apply -f istio/permissive.yml
 #### Install Knative Istio Controller
 
 ```bash
-kubectl apply --filename https://github.com/knative/net-istio/releases/download/v0.19.0/release.yaml
+kubectl apply --filename https://github.com/knative/net-istio/releases/download/v0.21.0/release.yaml
 ```
 
 Check PODs are running : 
@@ -60,32 +60,32 @@ It should look like this :
 ```bash
 $ kubectl get pods --namespace knative-serving
 NAME                                READY   STATUS    RESTARTS   AGE
-activator-845748699b-kbc65          1/1     Running   0          62m
-autoscaler-696d8868f4-2ctrz         1/1     Running   0          62m
-controller-7f7566fbcb-dg4qb         1/1     Running   0          62m
-istio-webhook-7dd7c94c7b-4t89r      1/1     Running   0          58m
-networking-istio-85f6b5c894-p9nqj   1/1     Running   0          58m
-webhook-54d6f984b4-b5vbj            1/1     Running   0          62m
+activator-86956bbd6f-jz8jc          1/1     Running   0          5m12s
+autoscaler-54cbd576f6-fc9kw         1/1     Running   0          5m12s
+controller-79c9cccd6f-5l4f8         1/1     Running   0          5m12s
+istio-webhook-56748b47-2rpvw        1/1     Running   0          4m3s
+networking-istio-5db557d5c4-djp8m   1/1     Running   0          4m3s
+webhook-5fd484cf4-z8zp5             1/1     Running   0          5m12s
 ```
 
 #### Install Knative Eventing Resources and Components
 
 ```bash
-kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.19.0/eventing-crds.yaml
+kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.21.0/eventing-crds.yaml
 
-kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.19.0/eventing-core.yaml
+kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.21.0/eventing-core.yaml
 ```
 
 #### Install a default InMemory channel
 
 ```bash
-kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.19.0/in-memory-channel.yaml
+kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.21.0/in-memory-channel.yaml
 ```
 
 And a default broker 
 
 ```bash
-kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.19.0/mt-channel-broker.yaml
+kubectl apply --filename https://github.com/knative/eventing/releases/download/v0.21.0/mt-channel-broker.yaml
 ```
 
 Check the Knative Eventing pods
@@ -98,14 +98,15 @@ And it should look like the following
 
 ```
 $ kubectl get pods --namespace knative-eventing
-NAME                                    READY   STATUS    RESTARTS   AGE
-eventing-controller-66c877b879-5k5p5    1/1     Running   0          62m
-eventing-webhook-644c5c7667-qg4x9       1/1     Running   0          62m
-imc-controller-587f98f97d-pwrxh         1/1     Running   0          62m
-imc-dispatcher-6db95d7857-jtmtr         1/1     Running   0          62m
-mt-broker-controller-76b65f7c96-pl2wt   1/1     Running   0          62m
-mt-broker-filter-6bd64f8c65-jb5sz       1/1     Running   0          62m
-mt-broker-ingress-7d8595d747-tfphr      1/1     Running   0          62m
+NAME                                   READY   STATUS    RESTARTS   AGE
+eventing-controller-d666b4657-tbrxf    1/1     Running   0          3m34s
+eventing-webhook-778b6b8cf4-hj8cs      1/1     Running   0          3m34s
+eventing-webhook-778b6b8cf4-qhdvh      1/1     Running   0          2m2s
+imc-controller-5f4bdf86cf-znfjj        1/1     Running   0          3m31s
+imc-dispatcher-54bfc97957-xk2tz        1/1     Running   0          3m31s
+mt-broker-controller-ff696f56c-c9sjb   1/1     Running   0          3m30s
+mt-broker-filter-d44b776d8-qg4pt       1/1     Running   0          3m30s
+mt-broker-ingress-6c8487b74c-fw6jb     1/1     Running   0          3m30s
 ```
 
 #### Install Camel K
@@ -122,9 +123,8 @@ Check the operator is up and running
 
 ```bash
 $ kubectl get po
-
 NAME                                READY   STATUS    RESTARTS   AGE
-camel-k-operator-57bbcbd6dc-ds5pp   1/1     Running   0          63m
+camel-k-operator-57bbcbd6dc-49nl5   1/1     Running   0          2m22s
 
 ```
 
